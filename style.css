@@ -206,3 +206,9 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 .hero-meta{margin-left:var(--pad);margin-right:var(--pad)}
 @media (min-width:1352px){.hero-meta{margin-left:auto;margin-right:auto}}
 @media (max-width:720px){.hero h1 br{display:none}.hero .btn{padding:12px 20px;font-size:14px}}
+
+/* film / simulation demo switch */
+.modes{display:inline-flex;gap:4px;padding:4px;margin-bottom:16px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.02)}
+.mode{appearance:none;border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:500;letter-spacing:.02em;color:#aeb4ba;background:transparent;padding:8px 18px;border-radius:999px;transition:color .2s,background .2s}
+.mode:hover{color:#fff}
+.mode.on{color:#07090c;background:#fff}

@@ -11,6 +11,7 @@ const PROTOTYPES = [
     domain: "Drones · Crew training",
     video: "assets/video/drone-mission-lab.mp4",
     poster: "assets/poster/drone-mission-lab.jpg",
+    demo: "assets/video/drone-mission-lab-demo.mp4", demoPoster: "assets/poster/drone-mission-lab-demo.jpg",
     oneline: "A training simulator where drone crews practise missions going wrong, with every run scored and replayable.",
     problem: "Lost links, jammed GPS and frozen video are hard to create safely in real flight. Crews often meet them for the first time on a real mission, and instructors have little hard evidence of how a crew coped.",
     shows: [
@@ -48,6 +49,7 @@ const PROTOTYPES = [
     domain: "Fighter jets · Autonomy",
     video: "assets/video/ai-pilot.mp4",
     poster: "assets/poster/ai-pilot.jpg",
+    demo: "assets/video/ai-pilot-demo.mp4", demoPoster: "assets/poster/ai-pilot-demo.jpg",
     oneline: "An AI that learns to survive incoming missiles by trial and error, seeing only what its radar sees.",
     problem: "No aircraft can be put in front of a real missile again and again. A test campaign gives a handful of engagements, while learning needs thousands, across every angle, altitude and timing.",
     shows: [
@@ -66,6 +68,7 @@ const PROTOTYPES = [
     domain: "Fighter jets · Pilot training",
     video: "assets/video/xr-cockpit.mp4",
     poster: "assets/poster/xr-cockpit.jpg",
+    demo: "assets/video/xr-cockpit-demo.mp4", demoPoster: "assets/poster/xr-cockpit-demo.jpg",
     oneline: "A fighter cockpit inside a VR headset, where pilots rehearse emergencies and missions over real terrain.",
     problem: "Engine fires, bird strikes and missile threats are rare in training and decisive when they happen. Full-flight simulators are costly and booked far ahead, and rarely show the terrain of the next mission.",
     shows: [
@@ -131,6 +134,7 @@ panels.innerHTML = PROTOTYPES.map((p, i) => `
       <span class="p-domain">${esc(p.domain)}</span>
     </div>
     <p class="p-oneline">${esc(p.oneline)}</p>
+    ${p.demo ? `<div class="modes" role="tablist" aria-label="${esc(p.name)} videos"><button class="mode on" data-mode="film" data-pid="${p.id}">Film</button><button class="mode" data-mode="demo" data-pid="${p.id}">Simulation demo</button></div>` : ""}
     <div class="stage" data-id="${p.id}">${stageHTML(p.video, p.poster, `0${i + 1} · ${p.name}`, p.tags)}</div>
     <div class="p-body">
       <div><h4>The problem</h4><p>${esc(p.problem)}</p></div>
@@ -144,6 +148,18 @@ panels.innerHTML = PROTOTYPES.map((p, i) => `
   </article>`).join("");
 
 PROTOTYPES.forEach(p => wireStage(panels.querySelector(`.stage[data-id="${p.id}"]`), p.video));
+function setMode(p, mode) {
+  const el = panels.querySelector(`.stage[data-id="${p.id}"]`);
+  pauseAll();
+  el.classList.remove("playing");
+  const demo = mode === "demo";
+  const i = PROTOTYPES.indexOf(p);
+  el.innerHTML = stageHTML(demo ? p.demo : p.video, demo ? p.demoPoster : p.poster,
+    `0${i + 1} · ${p.name}${demo ? " · simulation demo" : ""}`, demo ? null : p.tags);
+  if (demo) { const pl = el.querySelector(".pl"); if (pl) pl.textContent = "Play simulation demo"; }
+  wireStage(el, demo ? p.demo : p.video);
+  panels.querySelectorAll(`.mode[data-pid="${p.id}"]`).forEach(b => b.classList.toggle("on", b.dataset.mode === mode));
+}
 
 const ink = $("#ink");
 function moveInk() {
@@ -170,6 +186,7 @@ function activate(id, scroll) {
 }
 tabs.addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) activate(t.dataset.id, true); });
 panels.addEventListener("click", e => {
+  const m = e.target.closest(".mode"); if (m) { setMode(PROTOTYPES.find(x => x.id === m.dataset.pid), m.dataset.mode); return; }
   const b = e.target.closest("[data-go]"); if (b) activate(b.dataset.go, true);
   if (e.target.closest("[data-go-partner]")) $("#partner").scrollIntoView({ behavior: "smooth" });
 });

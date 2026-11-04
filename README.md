@@ -26,6 +26,8 @@ Astraion builds realistic simulation where these moments can be created on deman
 
 **Overview film:** [Watch](assets/video/overview.mp4)
 
+**Simulation demos:** [Drone Mission Lab](assets/video/drone-mission-lab-demo.mp4) · [AI Pilot](assets/video/ai-pilot-demo.mp4) · [XR Cockpit](assets/video/xr-cockpit-demo.mp4)
+
 ### Working together
 
 1. **Demonstration** — all four prototypes, on site or remote.
