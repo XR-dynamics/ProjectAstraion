@@ -20,9 +20,9 @@ Astraion builds realistic simulation where these moments can be created on deman
 | | Prototype | In one line | Film |
 |---|---|---|---|
 | <img src="assets/poster/drone-mission-lab.jpg" width="220"> | **01 · Drone Mission Lab** | A training simulator where drone crews practise missions going wrong, with every run scored and replayable. | [Watch](assets/video/drone-mission-lab.mp4) |
-| <img src="assets/poster/gps-denied-drone.jpg" width="220"> | **02 · GPS-Denied Drone** | A drone that finds its own way with no GPS and no pilot, using maps it carries onboard. | Demonstration on request |
-| <img src="assets/poster/ai-pilot.jpg" width="220"> | **03 · AI Pilot** | An AI that learns to survive incoming missiles by trial and error, seeing only what its radar sees. | [Watch](assets/video/ai-pilot.mp4) |
-| <img src="assets/poster/xr-cockpit.jpg" width="220"> | **04 · XR Cockpit** | A fighter cockpit inside a VR headset, where pilots rehearse emergencies and missions over real terrain. | [Watch](assets/video/xr-cockpit.mp4) |
+| <img src="assets/poster/ai-pilot.jpg" width="220"> | **02 · AI Pilot** | An AI that learns to survive incoming missiles by trial and error, seeing only what its radar sees. | [Watch](assets/video/ai-pilot.mp4) |
+| <img src="assets/poster/xr-cockpit.jpg" width="220"> | **03 · XR Cockpit** | A fighter cockpit inside a VR headset, where pilots rehearse emergencies and missions over real terrain. | [Watch](assets/video/xr-cockpit.mp4) |
+| <img src="assets/poster/gps-denied-drone.jpg" width="220"> | **04 · GPS-Denied Drone** | A drone that finds its own way with no GPS and no pilot, using maps it carries onboard. | Demonstration on request |
 
 **Overview film:** [Watch](assets/video/overview.mp4)
 

@@ -24,25 +24,6 @@ const PROTOTYPES = [
     forWho: ["Drone crews", "Instructors", "UAV programmes"]
   },
   {
-    id: "gps-denied-drone",
-    short: "GPS-Denied Drone",
-    name: "GPS-Denied Drone",
-    domain: "Drones · Autonomy",
-    video: null,
-    poster: "assets/poster/gps-denied-drone.jpg",
-    tags: [["GPS: no signal", "8%", "10%"], ["Pilot link: no signal", "8%", "19%"], ["Onboard map: loaded", "auto", "10%", "8%"], ["Navigation: autonomous", "auto", "19%", "8%"]],
-    oneline: "A drone that finds its own way with no GPS and no pilot, using maps it carries onboard.",
-    problem: "In contested areas GPS is jammed and the link to the pilot is cut. Deep inside, the drone is on its own. Teaching it to cope needs thousands of hostile flights that real airspace cannot allow.",
-    shows: [
-      "Navigates by landmarks, like a pilot reading a map",
-      "Maps of the mission area stored onboard before take-off",
-      "Trained through thousands of simulated flights under jamming, wind, night and cloud",
-      "Keeps flying the mission when GPS and link are both lost",
-      "Goes where no crew can be sent"
-    ],
-    forWho: ["UAV programmes", "Autonomy teams", "Special missions"]
-  },
-  {
     id: "ai-pilot",
     short: "AI Pilot",
     name: "AI Pilot",
@@ -79,6 +60,25 @@ const PROTOTYPES = [
       "Usable at base or deployed, between simulator sessions"
     ],
     forWho: ["Fighter pilots", "Flight training units", "Air forces"]
+  },
+  {
+    id: "gps-denied-drone",
+    short: "GPS-Denied Drone",
+    name: "GPS-Denied Drone",
+    domain: "Drones · Autonomy",
+    video: null,
+    poster: "assets/poster/gps-denied-drone.jpg",
+    tags: [["GPS: no signal", "8%", "10%"], ["Pilot link: no signal", "8%", "19%"], ["Onboard map: loaded", "auto", "10%", "8%"], ["Navigation: autonomous", "auto", "19%", "8%"]],
+    oneline: "A drone that finds its own way with no GPS and no pilot, using maps it carries onboard.",
+    problem: "In contested areas GPS is jammed and the link to the pilot is cut. Deep inside, the drone is on its own. Teaching it to cope needs thousands of hostile flights that real airspace cannot allow.",
+    shows: [
+      "Navigates by landmarks, like a pilot reading a map",
+      "Maps of the mission area stored onboard before take-off",
+      "Trained through thousands of simulated flights under jamming, wind, night and cloud",
+      "Keeps flying the mission when GPS and link are both lost",
+      "Goes where no crew can be sent"
+    ],
+    forWho: ["UAV programmes", "Autonomy teams", "Special missions"]
   }
 ];
 
@@ -98,7 +98,7 @@ function stageHTML(video, poster, label, tags) {
     <img class="poster" src="${poster}" alt="${esc(label)}" loading="lazy">
     ${t ? `<div class="tags">${t}</div>` : ""}
     ${video
-      ? `<button class="playbtn" aria-label="Play ${esc(label)} video"><span class="ring"></span><span class="pl">Play film</span></button>`
+      ? `<button class="playbtn" aria-label="Play ${esc(label)} video"><span class="ring"></span><span class="pl">Play video</span></button>`
       : `<span class="soon">Demonstration on request</span>`}
     <div class="hud"><i></i><i></i><i></i><i></i><span>${esc(label)}</span></div>`;
 }
@@ -134,7 +134,7 @@ panels.innerHTML = PROTOTYPES.map((p, i) => `
       <span class="p-domain">${esc(p.domain)}</span>
     </div>
     <p class="p-oneline">${esc(p.oneline)}</p>
-    ${p.demo ? `<div class="modes" role="tablist" aria-label="${esc(p.name)} videos"><button class="mode on" data-mode="film" data-pid="${p.id}">Film</button><button class="mode" data-mode="demo" data-pid="${p.id}">Simulation demo</button></div>` : ""}
+    ${p.demo ? `<div class="modes" role="tablist" aria-label="${esc(p.name)} videos"><button class="mode on" data-mode="demo" data-pid="${p.id}">Simulation demo</button><button class="mode" data-mode="film" data-pid="${p.id}">Overview</button></div>` : ""}
     <div class="stage" data-id="${p.id}">${stageHTML(p.video, p.poster, `0${i + 1} · ${p.name}`, p.tags)}</div>
     <div class="p-body">
       <div><h4>The problem</h4><p>${esc(p.problem)}</p></div>
@@ -148,6 +148,7 @@ panels.innerHTML = PROTOTYPES.map((p, i) => `
   </article>`).join("");
 
 PROTOTYPES.forEach(p => wireStage(panels.querySelector(`.stage[data-id="${p.id}"]`), p.video));
+PROTOTYPES.forEach(p => { if (p.demo) setMode(p, "demo"); });
 function setMode(p, mode) {
   const el = panels.querySelector(`.stage[data-id="${p.id}"]`);
   pauseAll();
