@@ -4,7 +4,7 @@
 
 <h1 align="center">Project Astraion</h1>
 <p align="center"><b>Simulation for the moments that decide a mission.</b><br>
-Four working prototypes for drone autonomy, crew training and pilot readiness.</p>
+Working prototypes for drone autonomy, crew training and pilot readiness.</p>
 
 ---
 
@@ -24,7 +24,7 @@ Astraion builds realistic simulation where these moments can be created on deman
 | <img src="assets/poster/xr-cockpit.jpg" width="220"> | **03 · XR Cockpit** | A fighter cockpit inside a VR headset, where pilots rehearse emergencies and missions over real terrain. | [Watch](assets/video/xr-cockpit.mp4) |
 | <img src="assets/poster/gps-denied-drone.jpg" width="220"> | **04 · GPS-Denied Drone** | A drone that finds its own way with no GPS and no pilot, using maps it carries onboard. | Demonstration on request |
 
-**Overview film:** [Watch](assets/video/overview.mp4)
+**AI pilot training** (footage from the working prototype simulation): [Watch](assets/video/ai-pilot-training.mp4) · **Overview:** [Watch](assets/video/overview.mp4)
 
 **Simulation demos:** [Drone Mission Lab](assets/video/drone-mission-lab-demo.mp4) · [AI Pilot](assets/video/ai-pilot-demo.mp4) · [XR Cockpit](assets/video/xr-cockpit-demo.mp4)
 
@@ -35,6 +35,6 @@ Astraion builds realistic simulation where these moments can be created on deman
 3. **Joint evaluation** — a defined study with agreed measures and results you can take into your own programme.
 
 **Private demonstrations for defence partners and investors.**
-[Request a briefing](https://www.linkedin.com/in/surajit-saikia-phd-55b717101/)
+Request a briefing: [info@iverseai.com](mailto:info@iverseai.com)
 
 <sub>Prototypes shown are for demonstration. They are not certified training devices. © 2026 Astraion.</sub>

@@ -116,10 +116,20 @@ function wireStage(el, video) {
 function pauseAll(except) { document.querySelectorAll(".stage video").forEach(v => { if (v !== except) v.pause(); }); }
 document.addEventListener("play", e => pauseAll(e.target), true);
 
-/* overview stage */
-const ov = document.querySelector(".overview .stage");
-ov.innerHTML = stageHTML(ov.dataset.video, ov.dataset.poster, ov.dataset.label);
-wireStage(ov, ov.dataset.video);
+/* featured stage: AI pilot training by default, overview on request */
+const OV = {
+  ai: { video: "assets/video/ai-pilot-training.mp4", poster: "assets/poster/ai-pilot-training.jpg", label: "AI pilot training", note: "Footage from the working prototype simulation." },
+  overview: { video: "assets/video/overview.mp4", poster: "assets/poster/overview.jpg", label: "Overview", note: "" }
+};
+const ov = document.getElementById("ovStage"), ovNote = document.getElementById("ovNote");
+function setOv(key) {
+  const c = OV[key]; pauseAll(); ov.classList.remove("playing");
+  ov.innerHTML = stageHTML(c.video, c.poster, c.label); wireStage(ov, c.video);
+  ovNote.textContent = c.note; ovNote.style.visibility = c.note ? "visible" : "hidden";
+  document.querySelectorAll(".overview .mode").forEach(b => b.classList.toggle("on", b.dataset.ov === key));
+}
+document.querySelectorAll(".overview .mode").forEach(b => b.addEventListener("click", () => setOv(b.dataset.ov)));
+setOv("ai");
 
 /* ---------- prototypes ---------- */
 const tabs = $("#tabs"), panels = $("#panels");
