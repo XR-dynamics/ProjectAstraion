@@ -215,3 +215,5 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 
 .ov-head .modes{margin-bottom:0}
 .ov-note{margin-top:14px;font-size:13.5px;color:var(--muted)}
+.ov-note a{color:var(--blue-hi);text-decoration:none;font-weight:500;margin-left:6px;white-space:nowrap}
+.ov-note a:hover{text-decoration:underline}
