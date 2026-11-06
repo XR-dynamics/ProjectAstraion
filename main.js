@@ -119,7 +119,7 @@ document.addEventListener("play", e => pauseAll(e.target), true);
 /* featured stage: AI pilot training by default, overview on request */
 const DEMO_NOTE = 'Real footage from the working prototype simulation, not AI-generated. <a href="mailto:info@iverseai.com?subject=Astraion%20AI%20pilot%20demo">Need a demo? Request one &rarr;</a>';
 const OV = {
-  trained: { video: "assets/video/ai-pilot-trained.mp4", poster: "assets/poster/ai-pilot-trained.jpg", label: "AI-trained pilot", note: DEMO_NOTE },
+  trained: { video: "assets/video/ai-pilot-hero.mp4", poster: "assets/poster/ai-pilot-hero.jpg", label: "AI-trained pilot", note: DEMO_NOTE },
   ai: { video: "assets/video/ai-pilot-training.mp4", poster: "assets/poster/ai-pilot-training.jpg", label: "AI pilot training", note: DEMO_NOTE },
   overview: { video: "assets/video/overview.mp4", poster: "assets/poster/overview.jpg", label: "Overview", note: "" }
 };
